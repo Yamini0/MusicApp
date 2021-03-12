@@ -12,7 +12,7 @@ import MusicItem from "./MusicItem";
 
 const Music = ({ navigation }) => {
   const [music, setMusic] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getMusicFromAPI();
@@ -21,13 +21,14 @@ const Music = ({ navigation }) => {
   const getMusicFromAPI = async () => {
     try {
       const response = await MusicData.get("search?term=Michael+jackson");
-      return setMusic(response.data), setLoading(true);
+      return setMusic(response.data), setLoading(false);
     } catch (error) {
       console.warn(error);
       //Alert.alert("Error", "Invalid Search:" + error);
     }
   };
-
+  {
+    /*
   if (loading) {
     return (
       <SafeAreaView>
@@ -53,17 +54,18 @@ const Music = ({ navigation }) => {
       </SafeAreaView>
     );
   }
+*/
+  }
 
-  const functiontoRender = ({ item }) => {
-    return <MusicItem item={item} />;
-  };
-  const render = useMemo(() => functiontoRender, []);
+  const render = useMemo(
+    () => ({ item }) => {
+      return <MusicItem item={item} />;
+    },
+    []
+  );
 
   const keyExtractor = (item, index) => index.toString();
-};
-export default Music;
 
-/*
   return (
     <SafeAreaView>
       <FlatList
@@ -74,4 +76,6 @@ export default Music;
         onRefresh={getMusicFromAPI}
       />
     </SafeAreaView>
-  );*/
+  );
+};
+export default Music;
