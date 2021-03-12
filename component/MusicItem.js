@@ -1,5 +1,4 @@
-import { Row } from "native-base";
-import React from "react";
+import React, { useCallback } from "react";
 import {
   View,
   StyleSheet,
@@ -13,12 +12,12 @@ import DetailScreen from "../screens/DetailScreen";
 const { width, height } = Dimensions.get("window");
 
 const MusicItem = ({ item, navigation }) => {
+  const navigateToDetailScreen = useCallback(() => {
+    navigation.navigate("Details", { item });
+  }, [item]);
+
   return (
-    <TouchableOpacity
-      onPress={() => {
-        navigation.navigate("DetailScreen", { item });
-      }}
-    >
+    <TouchableOpacity onPress={navigateToDetailScreen}>
       <View style={styles.cardView}>
         <View style={styles.imgContainer}>
           <Image
