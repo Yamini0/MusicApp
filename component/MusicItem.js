@@ -8,19 +8,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import DetailScreen from "../screens/DetailScreen";
-//import { onPressItem } from "./Music";
-
 const { width, height } = Dimensions.get("window");
-
 const MusicItem = (props, { navigation }) => {
   // const navigateToDetailScreen = useCallback(() => {
   //   navigation.navigate("MusicDetails", { item });
   // }, [item]);
-  // const _onPress = () => {
-  //   onPressItem;
-  // };
   return (
-    <TouchableOpacity onPress={() => props.navigation.navigate("Details")}>
+    <TouchableOpacity onPress={() => props.navigation.navigate("MusicDetails")}>
       <View style={styles.cardView}>
         <View style={styles.imgContainer}>
           <Image
@@ -37,7 +31,6 @@ const MusicItem = (props, { navigation }) => {
     </TouchableOpacity>
   );
 };
-
 const styles = StyleSheet.create({
   cardView: {
     flex: 1,
@@ -45,7 +38,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingHorizontal: 12,
     borderStyle: "solid",
-    backgroundColor: "#fafffa",
+    backgroundColor: "#FAFFFA",
     margin: width * 0.04,
     borderRadius: width * 0.05,
     shadowColor: "black",
@@ -53,7 +46,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 3,
   },
-
   imgContainer: {
     flex: 0,
     width: 110,

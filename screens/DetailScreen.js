@@ -1,11 +1,13 @@
 import React from "react";
 import { SafeAreaView, View, Text, Button, StyleSheet } from "react-native";
 
-function DetailScreen() {
-  //const { item, navigation } = route.params;
+function DetailScreen(props, { navigation }) {
+  const { item } = props;
   return (
     <SafeAreaView style={styles.itemInfo}>
-      <Text>hellooo from detail screen</Text>
+      <Text style={styles.name}> {props.item.trackName} </Text>
+      <Text style={styles.artistname}> {props.item.artistName} </Text>
+      <Text style={styles.collname}> {props.item.collectionName} </Text>
     </SafeAreaView>
   );
 }

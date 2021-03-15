@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   Alert,
   FlatList,
@@ -6,18 +6,14 @@ import {
   ActivityIndicator,
   Button,
 } from "react-native";
-
 import { MusicData } from "../apis/MusicData";
 import MusicItem from "./MusicItem";
-
 const Music = ({ props, navigation }) => {
   const [music, setMusic] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     getMusicFromAPI();
   }, []);
-
   const getMusicFromAPI = async () => {
     try {
       const response = await MusicData.get("search?term=Michael+jackson");
@@ -27,23 +23,13 @@ const Music = ({ props, navigation }) => {
       Alert.alert("Error", "Invalid Search:" + error);
     }
   };
-
-  function _onPressItem() {
-    navigation.navigate("MusicDetails");
-  }
-  // const navigateToDetailScreen = useCallback(() => {
-  //   navigation.navigate("MusicDetails");
-  // }, []);
-  //onPressItem={_onPressItem()}
   const render = useMemo(
     () => ({ item }) => {
       return <MusicItem item={item} navigation={navigation} />;
     },
     []
   );
-
-  const keyExtractor = (item, index) => index.key;
-
+  const keyExtractor = (item, index) => index.toString();
   return loading ? (
     <SafeAreaView>
       <ActivityIndicator
