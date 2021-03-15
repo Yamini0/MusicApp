@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Alert, FlatList, SafeAreaView, ActivityIndicator } from "react-native";
+import {
+  Alert,
+  FlatList,
+  SafeAreaView,
+  ActivityIndicator,
+  Button,
+} from "react-native";
 
 import { MusicData } from "../apis/MusicData";
 import MusicItem from "./MusicItem";
 
-const Music = ({ navigation }) => {
+const Music = ({ props, navigation }) => {
   const [music, setMusic] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -43,6 +49,10 @@ const Music = ({ navigation }) => {
     </SafeAreaView>
   ) : (
     <SafeAreaView>
+      {/* <Button
+        title="click"
+        onPress={() => navigation.navigate("MusicDetails")}
+      /> */}
       <FlatList
         data={music.results}
         keyExtractor={keyExtractor}

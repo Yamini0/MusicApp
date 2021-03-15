@@ -12,12 +12,12 @@ import DetailScreen from "../screens/DetailScreen";
 const { width, height } = Dimensions.get("window");
 
 const MusicItem = ({ item, navigation }) => {
-  const navigateToDetailScreen = useCallback(() => {
-    navigation.navigate("Details", { item });
-  }, [item]);
+  // const navigateToDetailScreen = useCallback(() => {
+  //   navigation.navigate("MusicDetails", { item });
+  // }, [item]);
 
   return (
-    <TouchableOpacity onPress={navigateToDetailScreen}>
+    <TouchableOpacity onPress={() => navigation.navigate("MusicDetails")}>
       <View style={styles.cardView}>
         <View style={styles.imgContainer}>
           <Image
