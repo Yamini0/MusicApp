@@ -8,27 +8,30 @@ import {
   TouchableOpacity,
 } from "react-native";
 import DetailScreen from "../screens/DetailScreen";
+//import { onPressItem } from "./Music";
 
 const { width, height } = Dimensions.get("window");
 
-const MusicItem = ({ item, navigation }) => {
+const MusicItem = (props, { navigation }) => {
   // const navigateToDetailScreen = useCallback(() => {
   //   navigation.navigate("MusicDetails", { item });
   // }, [item]);
-
+  // const _onPress = () => {
+  //   onPressItem;
+  // };
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("MusicDetails")}>
+    <TouchableOpacity onPress={() => props.navigation.navigate("Details")}>
       <View style={styles.cardView}>
         <View style={styles.imgContainer}>
           <Image
-            source={{ uri: item.artworkUrl100 }}
+            source={{ uri: props.item.artworkUrl100 }}
             style={styles.imageStyle}
           />
         </View>
         <View style={styles.itemInfo}>
-          <Text style={styles.name}> {item.trackName} </Text>
-          <Text style={styles.artistname}> {item.artistName} </Text>
-          <Text style={styles.collname}> {item.primaryGenreName} </Text>
+          <Text style={styles.name}> {props.item.trackName} </Text>
+          <Text style={styles.artistname}> {props.item.artistName} </Text>
+          <Text style={styles.collname}> {props.item.primaryGenreName} </Text>
         </View>
       </View>
     </TouchableOpacity>

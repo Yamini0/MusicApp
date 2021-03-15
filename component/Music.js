@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import {
   Alert,
   FlatList,
@@ -28,14 +28,21 @@ const Music = ({ props, navigation }) => {
     }
   };
 
+  function _onPressItem() {
+    navigation.navigate("MusicDetails");
+  }
+  // const navigateToDetailScreen = useCallback(() => {
+  //   navigation.navigate("MusicDetails");
+  // }, []);
+  //onPressItem={_onPressItem()}
   const render = useMemo(
     () => ({ item }) => {
-      return <MusicItem item={item} />;
+      return <MusicItem item={item} navigation={navigation} />;
     },
     []
   );
 
-  const keyExtractor = (item, index) => index.toString();
+  const keyExtractor = (item, index) => index.key;
 
   return loading ? (
     <SafeAreaView>
