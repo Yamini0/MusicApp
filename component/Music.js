@@ -37,9 +37,7 @@ const Music = ({ props, navigation }) => {
 
   const render = useMemo(
     () => ({ item }) => {
-      return (
-        <MusicItem item={item} functiontoNavigate={functiontoNavigate()} />
-      );
+      return <MusicItem item={item} functiontoNavigate={functiontoNavigate} />;
     },
     []
   );

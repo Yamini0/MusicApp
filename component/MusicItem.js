@@ -8,16 +8,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import { functiontoNavigate } from "./Music";
+//import { functiontoNavigate } from "./Music";
 
 const { width, height } = Dimensions.get("window");
 
-const MusicItem = (props, { navigation, item }) => {
-  // function onPressNav() {
-  //   navigation;
-  // }
+const MusicItem = (props, { item }) => {
   const NavigatetoDetail = useCallback(() => {
-    return functiontoNavigate, { item };
+    props.functiontoNavigate();
   }, [item]);
   //  const navigateToDetailScreen = useCallback(() => {
   //    props.navigation.navigate("MusicDetails", { item });
