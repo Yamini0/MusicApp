@@ -24,16 +24,12 @@ const Music = ({ props, navigation }) => {
     }
   };
 
-  // function nav() {
-  //   return props.navigation.navigate("MusicDetails");
-  // }
-
   const functiontoNavigate = () => {
-    return navigation.navigate("MusicDetails");
+    console.log("hello", music.results);
+    navigation.navigate("MusicDetails", {
+      param: music.results,
+    });
   };
-  // const navigateToDetailScreen = useCallback(() => {
-  //   props.navigation.navigate("MusicDetails", { item });
-  // }, [item]);
 
   const render = useMemo(
     () => ({ item }) => {
@@ -41,7 +37,7 @@ const Music = ({ props, navigation }) => {
     },
     []
   );
-  const keyExtractor = (item, index) => index.toString();
+  const keyExtractor = (item, index) => index.key; //key mainly a uniuqe id of the api should be used.
   return loading ? (
     <SafeAreaView>
       <ActivityIndicator

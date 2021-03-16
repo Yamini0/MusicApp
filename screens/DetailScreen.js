@@ -1,36 +1,40 @@
 import React from "react";
 import { SafeAreaView, View, Text, Button, StyleSheet } from "react-native";
 
-function DetailScreen({ navigation }) {
-  //const { props } = route.params;
+function DetailScreen({ route, navigation, item }) {
+  //console.warn(route);
+  const { param } = route.params;
   return (
     <View style={styles.itemInfo}>
-      <Text>Hello from detail screen.....</Text>
+      <Text style={styles.name}>Artist Name</Text>
+      <Text style={styles.detail}> {param.item.artistName}</Text>
+      <Text style={styles.name}>Collection Name</Text>
+      <Text style={styles.detail}>{param.item.trackName}</Text>
+      <Text style={styles.name}>Tack Name</Text>
+      <Text style={styles.detail}>{param.item.trackName}</Text>
+      <Text style={styles.name}>Release Date</Text>
+      <Text style={styles.detail}>{param.item.trackName}</Text>
+      <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
 }
 const styles = StyleSheet.create({
   itemInfo: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 15,
+    marginTop: 10,
   },
   name: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     color: "black",
     fontSize: 20,
     fontWeight: "bold",
   },
-  artistname: {
+  detail: {
     color: "#696969",
     fontSize: 18,
-  },
-  collname: {
-    fontSize: 16,
-    color: "blue",
+    marginBottom: 15,
   },
 });
 export default DetailScreen;
