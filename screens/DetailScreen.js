@@ -1,21 +1,22 @@
 import React from "react";
-import { SafeAreaView, View, Text, Button, StyleSheet } from "react-native";
+import { SafeAreaView, Text, Button, StyleSheet } from "react-native";
 
-function DetailScreen({ route, navigation, item }) {
+function DetailScreen({ route, navigation, key }) {
   //console.warn(route);
-  const { param } = route.params;
+  console.warn(route.params.key.artistId);
+  //const { param } = route.params;
   return (
-    <View style={styles.itemInfo}>
+    <SafeAreaView style={styles.itemInfo}>
       <Text style={styles.name}>Artist Name</Text>
-      <Text style={styles.detail}> {param.item.artistName}</Text>
+
       <Text style={styles.name}>Collection Name</Text>
-      <Text style={styles.detail}>{param.item.trackName}</Text>
+      <Text style={styles.detail}>{route.params.artistId}</Text>
       <Text style={styles.name}>Tack Name</Text>
-      <Text style={styles.detail}>{param.item.trackName}</Text>
+
       <Text style={styles.name}>Release Date</Text>
-      <Text style={styles.detail}>{param.item.trackName}</Text>
+
       <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({

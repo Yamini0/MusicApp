@@ -13,12 +13,15 @@ import {
 const { width, height } = Dimensions.get("window");
 
 const MusicItem = (props, { item }) => {
-  const navigatetoDetail = useCallback(() => {
-    props.functiontoNavigate();
-  }, [item]);
+  // const navigatetoDetail = useCallback(() => {
+  //   props.functiontoNavigate();
+  // }, [item]);
+  const getItem = () => {
+    alert(props.keyofItem);
+  };
 
   return (
-    <TouchableOpacity onPress={navigatetoDetail}>
+    <TouchableOpacity onPress={() => getItem()}>
       <View style={styles.cardView}>
         <View style={styles.imgContainer}>
           <Image

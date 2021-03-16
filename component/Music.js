@@ -20,12 +20,11 @@ const Music = ({ props, navigation }) => {
       return setMusic(response.data), setLoading(false);
     } catch (error) {
       console.warn(error);
-      Alert.alert("Error", "Invalid Search:" + error);
+      Alert.alert("Error", "Invalid Search:" + " " + error);
     }
   };
-
   const functiontoNavigate = () => {
-    console.log("hello", music.results);
+    //console.log("hello", music.results);
     navigation.navigate("MusicDetails", {
       param: music.results,
     });
@@ -33,11 +32,20 @@ const Music = ({ props, navigation }) => {
 
   const render = useMemo(
     () => ({ item }) => {
-      return <MusicItem item={item} functiontoNavigate={functiontoNavigate} />;
+      return (
+        <MusicItem
+          item={item}
+          functiontoNavigate={functiontoNavigate}
+          keyofItem={keyofItem}
+        />
+      );
     },
-    []
+    [functiontoNavigate]
   );
-  const keyExtractor = (item, index) => index.key; //key mainly a uniuqe id of the api should be used.
+  const keyofItem = keyExtractor;
+  const keyExtractor = (item, index) => {
+    index.toString();
+  }; //key mainly a uniuqe id of the api should be used.
   return loading ? (
     <SafeAreaView>
       <ActivityIndicator
@@ -50,10 +58,6 @@ const Music = ({ props, navigation }) => {
     </SafeAreaView>
   ) : (
     <SafeAreaView>
-      {/* <Button
-        title="click"
-        onPress={() => navigation.navigate("MusicDetails")}
-      /> */}
       <FlatList
         data={music.results}
         keyExtractor={keyExtractor}
