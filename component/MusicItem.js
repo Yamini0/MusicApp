@@ -14,8 +14,7 @@ const { width, height } = Dimensions.get("window");
 
 const MusicItem = (props, { item }) => {
   const navigatetoDetail = useCallback(() => {
-    //console.warn(props.functiontoNavigate(item));
-    props.functiontoNavigate(item);
+    props.functiontoNavigate();
   }, [item]);
 
   return (

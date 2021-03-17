@@ -2,19 +2,19 @@ import React from "react";
 import { SafeAreaView, Text, Button, StyleSheet } from "react-native";
 
 function DetailScreen({ route, navigation, key }) {
-  //console.warn(route);
   //console.warn(route.params.key.artistId);
+  //console.warn(route.params.param);
   const { param } = route.params;
   return (
     <SafeAreaView style={styles.itemInfo}>
-      <Text style={styles.name}>Artist Name</Text>
-
-      <Text style={styles.name}>Collection Name</Text>
-      <Text style={styles.detail}>{param.artistId}</Text>
       <Text style={styles.name}>Tack Name</Text>
-
+      <Text style={styles.detail}> {param.trackName} </Text>
+      <Text style={styles.name}>Artist Name</Text>
+      <Text style={styles.detail}> {param.artistName} </Text>
+      <Text style={styles.name}>Collection Name</Text>
+      <Text style={styles.detail}> {param.primaryGenreName} </Text>
       <Text style={styles.name}>Release Date</Text>
-
+      <Text style={styles.detail}> {param.releaseDate} </Text>
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </SafeAreaView>
   );
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   detail: {
-    color: "#696969",
+    color: "black",
     fontSize: 18,
     marginBottom: 15,
   },

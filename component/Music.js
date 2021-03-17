@@ -23,9 +23,9 @@ const Music = ({ props, navigation }) => {
       Alert.alert("Error", "Invalid Search:" + " " + error);
     }
   };
-  const functiontoNavigate = () => {
+  const functiontoNavigate = (item) => {
     navigation.navigate("MusicDetails", {
-      param: music.results,
+      param: item,
     });
   };
 
