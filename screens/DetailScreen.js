@@ -3,14 +3,14 @@ import { SafeAreaView, Text, Button, StyleSheet } from "react-native";
 
 function DetailScreen({ route, navigation, key }) {
   //console.warn(route);
-  console.warn(route.params.key.artistId);
-  //const { param } = route.params;
+  //console.warn(route.params.key.artistId);
+  const { param } = route.params;
   return (
     <SafeAreaView style={styles.itemInfo}>
       <Text style={styles.name}>Artist Name</Text>
 
       <Text style={styles.name}>Collection Name</Text>
-      <Text style={styles.detail}>{route.params.artistId}</Text>
+      <Text style={styles.detail}>{param.artistId}</Text>
       <Text style={styles.name}>Tack Name</Text>
 
       <Text style={styles.name}>Release Date</Text>

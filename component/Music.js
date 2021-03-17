@@ -24,7 +24,6 @@ const Music = ({ props, navigation }) => {
     }
   };
   const functiontoNavigate = () => {
-    //console.log("hello", music.results);
     navigation.navigate("MusicDetails", {
       param: music.results,
     });
@@ -35,17 +34,14 @@ const Music = ({ props, navigation }) => {
       return (
         <MusicItem
           item={item}
-          functiontoNavigate={functiontoNavigate}
-          keyofItem={keyofItem}
+          functiontoNavigate={() => functiontoNavigate(item)}
         />
       );
     },
     [functiontoNavigate]
   );
-  const keyofItem = keyExtractor;
-  const keyExtractor = (item, index) => {
-    index.toString();
-  }; //key mainly a uniuqe id of the api should be used.
+
+  const keyExtractor = (item, index) => index.key; //key mainly a uniuqe id of the api should be used.
   return loading ? (
     <SafeAreaView>
       <ActivityIndicator
