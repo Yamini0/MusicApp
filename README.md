@@ -20,7 +20,7 @@ A task to know about API calling and fetching data from provided Api URL using a
 ## Final Application
 
 **HomeScreen:**
-!()[./assets/home.jpeg]
+!()[assets/home.jpeg]
 
 **DetailScreen:**
-!()[./assets/detail.jpeg]
+!()[assets/detail.jpeg]
