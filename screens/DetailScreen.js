@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, Text, Button, StyleSheet } from "react-native";
+import { SafeAreaView, Text, Button, StyleSheet, Image } from "react-native";
 
 function DetailScreen({ route, navigation, key }) {
   //console.warn(route.params.key.artistId);
@@ -7,6 +7,7 @@ function DetailScreen({ route, navigation, key }) {
   const { param } = route.params;
   return (
     <SafeAreaView style={styles.itemInfo}>
+      <Image style={styles.imageStyle} source={{ uri: param.artworkUrl100 }} />
       <Text style={styles.name}>Tack Name</Text>
       <Text style={styles.detail}> {param.trackName} </Text>
       <Text style={styles.name}>Artist Name</Text>
@@ -15,6 +16,7 @@ function DetailScreen({ route, navigation, key }) {
       <Text style={styles.detail}> {param.primaryGenreName} </Text>
       <Text style={styles.name}>Release Date</Text>
       <Text style={styles.detail}> {param.releaseDate} </Text>
+
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </SafeAreaView>
   );
@@ -37,9 +39,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 15,
   },
+  imageStyle: {
+    width: 250,
+    height: 250,
+    borderRadius: 20,
+  },
 });
 export default DetailScreen;
-/*<Text style={styles.name}>{props.trackname}</Text>
-    //   <Text style={styles.artistname}>{props.trackname}</Text>
-    //   <Text style={styles.collname}>{props.trackname}</Text>
-    </View>*/

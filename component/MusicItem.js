@@ -8,8 +8,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-//import { functiontoNavigate } from "./Music";
-
 const { width, height } = Dimensions.get("window");
 
 const MusicItem = (props, { item }) => {
